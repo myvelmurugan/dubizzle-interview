@@ -27,6 +27,7 @@ resource "aws_subnet" "demo" {
     Name = "dubizzle-demo-node"
     "kubernetes.io/cluster/${var.cluster-name}" = "shared"
     sre_candidate = "velmurugan"
+   "kubernetes.io/role/elb" = 1
  })
 }
 
