@@ -4,16 +4,13 @@ data:
     <source>
       type tail
       format none
-      path /var/log/nginx/error.log
-      tag dubizzle
-    </source>
-
-    <source>
-      type tail
-      format none
       path /var/log/nginx/access.log
       tag dubizzle
     </source>
+
+    <match dubizzle**>
+     @type stdout
+    </match>
 kind: ConfigMap
 metadata:
   name: fluentd-config
