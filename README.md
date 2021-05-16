@@ -5,10 +5,12 @@ Tools / ClI required
 1)	aws cli
 2)	helm
 3)	aws-iam-authenticator
-4)	terrafor
+4)	terraform
 
 git@github.com:myvelmurugan/dubizzle-interview.git  -- > download this repo
-[root@ip-172-31-33-111 interview-dubizzle]# ls
+
+
+oot@ip-172-31-33-111 interview-dubizzle]# ls
 cluster-autoscaler  efk  helm-appdeployment  hpa  Ingress-controller  k8s-appdeployment  README.md  terraform
 
 -	terraform – to provision the eks cluster
@@ -37,13 +39,16 @@ cd /<gitrepo>/cluster-autoscaler
  run – kubectl create –f cluster-autoscaler.yaml -> you can edit the cluster name as per the terraform state.
  
 
- 
-
-
 Application deployment 
 -	Docker Image : vel123/nginx:2.0
 -	Config map for nginx configuration and fluentd config
 -	Fluentd side car container for shipping the nginx logs
+
+
+kubectl create -f <gitpath>/k8sappdeployment/*.yaml
+
+Helm also we can deploy
+ ex helm install dubizzle ./dubizzle-assesment/ -f dubizzle-assesment/values.yaml  -n vel
 
 [root@ip-172-31-33-111 k8s-appdeployment]# kubectl get deploy nginx-dep -o yaml | grep -i image
       - image: vel123/nginx:2.0
@@ -52,30 +57,8 @@ Application deployment
         imagePullPolicy: IfNotPresent
 
  
-Web server – validation
-
- 
-
 ELK Helm
 Helm install elasticsearch  <gitpath>efk/elasticsearch 
 Helm install kibana <gitpath/efk/kibana
-Kubectl create –f <gitpath>/efk
-
-Helm app deployment
-Helm install dubizzle ./dubizzle-assesment/ -f dubizzle-assesment/values.yaml  -n  namespace
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Kubectl create –f <gitpath>/fluentd*/yaml
 
