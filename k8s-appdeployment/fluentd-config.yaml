@@ -1,0 +1,22 @@
+apiVersion: v1
+data:
+  fluentd.conf: |
+    <source>
+      @type tail
+      format none
+      path /var/log/nginx/access.log
+      pos_file /var/log/nginx/access.log.pos
+      tag dubizzle
+    </source>
+
+    <match dubizzle**>
+     @type stdout
+    </match>
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2021-05-13T12:09:52Z"
+  name: fluentd-config
+  namespace: default
+  resourceVersion: "1574138"
+  selfLink: /api/v1/namespaces/default/configmaps/fluentd-config
+  uid: f03c66bc-0529-455e-96db-dca8d13012e2
