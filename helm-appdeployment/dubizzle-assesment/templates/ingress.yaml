@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    #alb.ingress.kubernetes.io/subnets: subnet-014ecb8f61552ca2a, subnet-0a1780eece524e7fa
+    kubernetes.io/ingress.class: alb
+  creationTimestamp: "2021-05-12T19:38:17Z"
+  generation: 1
+  name: dubizzle-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: dubizzle-web-svc
+          servicePort: 80
+        path: /*
+        pathType: ImplementationSpecific

@@ -1,0 +1,24 @@
+apiVersion: v1
+data:
+  fluentd.conf: |
+    <source>
+      type tail
+      format none
+      path /var/log/nginx/error.log
+      tag dubizzle
+    </source>
+
+    <source>
+      type tail
+      format none
+      path /var/log/nginx/access.log
+      tag dubizzle
+    </source>
+kind: ConfigMap
+metadata:
+  name: fluentd-config
+  labels:
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    app: dubizzle-web

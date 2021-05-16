@@ -1,0 +1,16 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: "2021-05-13T10:55:06Z"
+  name: fluentd
+  resourceVersion: "393481"
+  selfLink: /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/fluentd
+  uid: cc79d326-7e63-4629-a463-e60ff40e50e2
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: fluentd
+subjects:
+- kind: ServiceAccount
+  name: fluent-bit
+  namespace: logging

@@ -1,0 +1,3 @@
+  echo "Application is running on"
+   kubectl get all --namespace {{ .Release.Namespace }} 
+   kubectl get ingress --namespaces {{ .Release.Namespace }} dubizzle-ingress

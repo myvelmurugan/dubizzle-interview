@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2021-05-13T09:54:30Z"
+  labels:
+    app: fluentd
+  name: fluent-bit
+  namespace: logging
+  resourceVersion: "392991"
+  selfLink: /api/v1/namespaces/logging/serviceaccounts/fluent-bit
+  uid: 9d716c02-e008-42c2-8e05-19b74ab73fd2
+secrets:
+- name: fluent-bit-token-lsbc7

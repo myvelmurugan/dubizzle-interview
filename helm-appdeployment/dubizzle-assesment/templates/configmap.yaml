@@ -1,0 +1,37 @@
+apiVersion: v1
+data:
+  default.conf: "server {\n    listen       80;\n    server_name  localhost;\n\n    #charset
+    koi8-r;\n    #access_log  /var/log/nginx/host.access.log  main;\n    location
+    / {\n      root /usr/share/nginx/html;\n      index index.html index.html;\n     }\n
+    \   \n    location /check.txt {\n       root /usr/share/nginx/html;\n       return
+    200 '200 \"its working\"';\n     }\n \n    location /403 {\n        root   /usr/share/nginx/html;\n
+    \       #index  index.html index.htm;\n        return 403;\n    }\n\n\n    location
+    /404 {\n        root   /usr/share/nginx/html;\n        #index  index.html index.htm;\n
+    \       return 404;\n    }\n\n    location /500 {\n        root   /usr/share/nginx/html;\n
+    \       #index  index.html index.htm;\n        return 500;\n    }\n    \n    location
+    /502 {\n        root   /usr/share/nginx/html;\n        #index  index.html index.htm;\n
+    \       return 502;\n    }\n    \n    error_page 500                /500.html;\n
+    \   location = /500.html {\n         root /usr/share/nginx/html;\n    }  \n    error_page
+    404               /404.html;\n    location = /404.html {\n         root /usr/share/nginx/html;\n
+    \   }  \n    error_page 403                /403.html;\n    location = /403.html
+    {\n         root /usr/share/nginx/html;\n    }  \n\n    error_page 502               /502.html;\n
+    \   location = /502.html {\n         root /usr/share/nginx/html;\n    }  \n\n
+    \   # redirect server error pages to the static page /50x.html\n    #\n#    error_page
+    \  500 502 503 504  /50x.html;\n#    location = /50x.html {\n#        root   /usr/share/nginx/html;\n#
+    \   }\n\n    # proxy the PHP scripts to Apache listening on 127.0.0.1:80\n    #\n
+    \   #location ~ \\.php$ {\n    #    proxy_pass   http://127.0.0.1;\n    #}\n\n
+    \   # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000\n    #\n
+    \   #location ~ \\.php$ {\n    #    root           html;\n    #    fastcgi_pass
+    \  127.0.0.1:9000;\n    #    fastcgi_index  index.php;\n    #    fastcgi_param
+    \ SCRIPT_FILENAME  /scripts$fastcgi_script_name;\n    #    include        fastcgi_params;\n
+    \   #}\n\n    # deny access to .htaccess files, if Apache's document root\n    #
+    concurs with nginx's one\n    #\n    #location ~ /\\.ht {\n    #    deny  all;\n
+    \   #}\n}\n\n"
+kind: ConfigMap
+metadata:
+  name: nginx
+  labels:
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    app: dubizzle-web

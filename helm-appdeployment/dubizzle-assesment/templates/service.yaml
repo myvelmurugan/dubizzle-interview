@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    {{- include "dubizzle-assesment.labels" . | nindent 4 }}
+  name: dubizzle-web-svc
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    {{- include "dubizzle-assesment.selectorLabels" . | nindent 8 }}
+  type: ClusterIP
+status:
+  loadBalancer: {}
