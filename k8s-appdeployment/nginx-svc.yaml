@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2021-05-13T08:22:30Z"
+  labels:
+    app: nginx-dep
+  name: nginx-service
+  namespace: default
+  resourceVersion: "356419"
+  selfLink: /api/v1/namespaces/default/services/nginx-service
+  uid: 6926516d-4029-4e3b-8ca9-2eb6e81f150e
+spec:
+  clusterIP: 172.20.163.2
+  externalTrafficPolicy: Cluster
+  ports:
+  - nodePort: 31196
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: nginx-dep
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}
